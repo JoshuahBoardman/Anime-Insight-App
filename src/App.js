@@ -11,6 +11,7 @@ function App() {
   const [trendingAnimeData, setTrendingAnimeData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // TODO: Might have to add dependency
   useEffect(() => {
     handleTrendingAnimeData();
   }, []);

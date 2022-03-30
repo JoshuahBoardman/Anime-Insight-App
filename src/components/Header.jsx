@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <header>
-      <nav className="navbar navbar-dark bg-primary">
+      <nav className="navbar navbar-dark bg-primary shadow-sm">
         <div className="container fluid">
           {/* TODO: maybe add a book with a eye as a logo */}
           <div className="navbar-brand">Anime Insight</div>
