@@ -13,9 +13,12 @@ function App() {
 
   useEffect(() => {
     handleTrendingAnimeData();
+  }, []);
+
+  useEffect(() => {
     if (trendingAnimeData.length > 0) setIsLoading(false);
     console.log(trendingAnimeData);
-  });
+  }, [trendingAnimeData])
 
   // TODO: ADD Loading State
   async function getTrendingAnimeData() {
@@ -23,7 +26,7 @@ function App() {
       const response = await fetch(`${BASE_API_PATH}/trending/anime`);
       if (response.status !== 200) return;
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       console.error(error);
