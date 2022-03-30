@@ -19,9 +19,8 @@ function App() {
   useEffect(() => {
     if (trendingAnimeData.length > 0) setIsLoading(false);
     console.log(trendingAnimeData);
-  }, [trendingAnimeData])
+  }, [trendingAnimeData]);
 
-  // TODO: ADD Loading State
   async function getTrendingAnimeData() {
     try {
       const response = await fetch(`${BASE_API_PATH}/trending/anime`);
@@ -40,17 +39,18 @@ function App() {
   }
 
   return (
-    <>
+    <div className="bg-secondary">
       <Header />
       <main>
-        {isLoading ? (
+      {isLoading ? (
           <Loading />
         ) : (
           <Hero trendingAnimeData={trendingAnimeData} />
         )}
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

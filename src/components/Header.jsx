@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Header = () => {
+  const [inputValue, setInputValue] = useState('');
+
   return (
     <header>
-      <nav className="navbar navbar-dark bg-primary shadow-sm">
+      <nav className="navbar navbar-dark bg-primary shadow">
         <div className="container fluid">
           {/* TODO: maybe add a book with a eye as a logo */}
           <div className="navbar-brand">Anime Insight</div>
@@ -13,6 +15,8 @@ const Header = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              value={inputValue}
+              onChange={e => setInputValue(e.target.value)}
             />
             {/* TODO: change search for a eye-glass, maybe a input-group*/}
             <button className="btn btn-outline-light" type="submit">
