@@ -25,12 +25,14 @@ function App() {
 
   useEffect(() => {
     if (trendingAnimeData.length > 0) setIsLoading(false);
-    console.log(trendingAnimeData);
+    // console.log(trendingAnimeData);
   }, [trendingAnimeData]);
 
   async function getTrendingAnimeData() {
     try {
-      const response = await fetch(`${BASE_API_PATH}/anime?page[limit]=20&page[offset]=0`);
+      const response = await fetch(
+        `${BASE_API_PATH}/anime?page[limit]=20&page[offset]=0`
+      );
       if (response.status !== 200) return;
       const data = await response.json();
       // console.log(data);
@@ -48,9 +50,44 @@ function App() {
           <Loading />
         ) : (
           [
+            /* TODO Make offset random */
             <Hero trendingAnimeData={trendingAnimeData} />,
-            <CatagorySwipper animeDataArray={trendingAnimeData} sectionTitle={"Trending Now"}/>,
-            <CatagorySwipper animeDataArray={trendingAnimeData} sectionTitle={"Action"}/>,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/trending/anime`}
+              sectionTitle={"Trending Now"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=adventure&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Adventure"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=action&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Action"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=comedy&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Comedy"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=slice-of-life&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Slice of Life"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=drama&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Drama"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=fantasy&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Fantasy"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=horror&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Horror"}
+            />,
+            <CatagorySwipper
+              apiPath={`${BASE_API_PATH}/anime?filter[genres]=romance&page[limit]=20&page[offset]=0`}
+              sectionTitle={"Romance"}
+            />,
           ].map((compnent, index) => <div key={index}>{compnent}</div>)
         )}
       </section>
