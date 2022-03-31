@@ -7,6 +7,7 @@ import Loading from "./components/Loading";
 import CatagorySwipper from "./components/CatagorySwipper";
 
 function App() {
+  //TODO: Might want to pass base URL down to components where they can handle their own API calls
   const BASE_API_PATH = "https://kitsu.io/api/edge";
 
   const [trendingAnimeData, setTrendingAnimeData] = useState([]);
@@ -14,6 +15,11 @@ function App() {
 
   // TODO: Might have to add dependency
   useEffect(() => {
+    async function handleTrendingAnimeData() {
+      const data = await getTrendingAnimeData();
+      setTrendingAnimeData([...data.data]);
+    }
+
     handleTrendingAnimeData();
   }, []);
 
@@ -24,7 +30,7 @@ function App() {
 
   async function getTrendingAnimeData() {
     try {
-      const response = await fetch(`${BASE_API_PATH}/trending/anime`);
+      const response = await fetch(`${BASE_API_PATH}/anime?page[limit]=20&page[offset]=0`);
       if (response.status !== 200) return;
       const data = await response.json();
       // console.log(data);
@@ -34,37 +40,22 @@ function App() {
     }
   }
 
-  async function handleTrendingAnimeData() {
-    const data = await getTrendingAnimeData();
-    setTrendingAnimeData([...data.data]);
-  }
-
-  function onLoad() {
-
-  }
-
   return (
     <div className="bg-secondary">
       <Header />
       <section>
-
-      {isLoading ? (
+        {isLoading ? (
           <Loading />
         ) : (
-          [<Hero trendingAnimeData={trendingAnimeData} /> ,
-          <CatagorySwipper trendingAnimeData={trendingAnimeData}  />].map((compnent, index) => (
-            <div key={index}>
-            {compnent}
-            </div>
-            
-          ))
+          [
+            <Hero trendingAnimeData={trendingAnimeData} />,
+            <CatagorySwipper animeDataArray={trendingAnimeData} sectionTitle={"Trending Now"}/>,
+            <CatagorySwipper animeDataArray={trendingAnimeData} sectionTitle={"Action"}/>,
+          ].map((compnent, index) => <div key={index}>{compnent}</div>)
         )}
-        
       </section>
-      <section>
-      
-      </section>
-      
+      <section></section>
+
       <Footer />
     </div>
   );
