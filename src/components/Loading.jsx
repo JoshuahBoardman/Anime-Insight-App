@@ -3,7 +3,7 @@ import React from 'react'
 const Loading = () => {
   // TODO: Make this a spinner
   return (
-    <div>Loading...</div>
+    <div className='text-light'>Loading...</div>
   )
 }
 

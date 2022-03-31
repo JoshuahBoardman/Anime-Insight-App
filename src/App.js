@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Loading from "./components/Loading";
+import CatagorySwipper from "./components/CatagorySwipper";
 
 function App() {
   const BASE_API_PATH = "https://kitsu.io/api/edge";
@@ -38,17 +39,32 @@ function App() {
     setTrendingAnimeData([...data.data]);
   }
 
+  function onLoad() {
+
+  }
+
   return (
     <div className="bg-secondary">
       <Header />
-      <main>
+      <section>
+
       {isLoading ? (
           <Loading />
         ) : (
-          <Hero trendingAnimeData={trendingAnimeData} />
+          [<Hero trendingAnimeData={trendingAnimeData} /> ,
+          <CatagorySwipper trendingAnimeData={trendingAnimeData}  />].map((compnent, index) => (
+            <div key={index}>
+            {compnent}
+            </div>
+            
+          ))
         )}
-      </main>
-
+        
+      </section>
+      <section>
+      
+      </section>
+      
       <Footer />
     </div>
   );

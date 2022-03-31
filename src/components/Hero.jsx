@@ -8,6 +8,7 @@ const Hero = ({ trendingAnimeData }) => {
     setIndex(selectedIndex);
   };
 
+  // TODO: Ajust caption styling and size
   return (
     <>
       {/* TODO: Add a header that says something like "Trending above the carousel maybe?" */}
@@ -20,7 +21,7 @@ const Hero = ({ trendingAnimeData }) => {
             className="d-block w-100"
             src={trendingAnimeData[0].attributes.coverImage.large}
             alt="First slide"
-            style={{ filter: "brightness(60%)" }}
+            style={{ filter: "brightness(65%)" }}
 
           />
           <Carousel.Caption>
@@ -34,7 +35,7 @@ const Hero = ({ trendingAnimeData }) => {
             className="d-block w-100"
             src={trendingAnimeData[1].attributes.coverImage.large}
             alt="First slide"
-            style={{ filter: "brightness(60%)" }}
+            style={{ filter: "brightness(65%)" }}
           />
           <Carousel.Caption>
             <h3 className="h2 mb-1">
@@ -47,7 +48,7 @@ const Hero = ({ trendingAnimeData }) => {
             className="d-block w-100"
             src={trendingAnimeData[2].attributes.coverImage.large}
             alt="First slide"
-            style={{ filter: "brightness(60%)" }}
+            style={{ filter: "brightness(65%)" }}
           />
           <Carousel.Caption>
             <h3 className="h2 mb-1">
