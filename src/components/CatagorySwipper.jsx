@@ -29,7 +29,7 @@ const CatagorySwipper = ({ apiPath, sectionTitle }) => {
     }
 
     handleAnimeData();
-  }, []);
+  }, [apiPath]);
 
   useEffect(() => {
     if (animeData.length > 0) setIsLoading(false);
@@ -51,7 +51,7 @@ const CatagorySwipper = ({ apiPath, sectionTitle }) => {
   // TODO: Add hover effects to the images
   // TODO: Chnage navigation color
   return (
-    <div className="container-lg mt-4">
+    <div className="container-lg mt-2 mt-sm-4">
       <div className="row justify-content-center align-items-center">
         <div className="col-lg-11">
           <h3 className="h2 text-align-start text-light mb-3">
