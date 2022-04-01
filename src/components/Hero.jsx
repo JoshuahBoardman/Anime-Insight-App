@@ -40,7 +40,7 @@ const Hero = ({ apiPath }) => {
 
   // TODO: Ajust caption styling and size
   return (
-    <>
+    <section>
       {/* TODO: Add a header that says something like "Trending above the carousel maybe?" */}
       {/* TODO: Add some margin around the carousel to give the page some white or black maybe? */}
       {/* TODO: Make the carousel clickable. */}
@@ -94,7 +94,7 @@ const Hero = ({ apiPath }) => {
           </Carousel.Item>
         </Carousel>
       )}
-    </>
+    </section>
   );
 };
 

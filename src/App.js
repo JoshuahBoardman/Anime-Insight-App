@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -8,7 +7,7 @@ import CatagorySwipper from "./components/CatagorySwipper";
 function App() {
   const BASE_API_PATH = "https://kitsu.io/api/edge";
 
-  const [animecSectionData] = useState([
+  const [animeSectionData] = useState([
     {
       sectionTitle: "Trending Now",
       apiPath: "/trending/anime",
@@ -51,22 +50,20 @@ function App() {
   return (
     <div className="bg-secondary">
       <Header />
-      <section>
-        {[
+
+      {
+        [
           /* TODO Make offset random 5350(for comedy)*/
           <Hero apiPath={`${BASE_API_PATH}/trending/anime`} />,
-          animecSectionData.map((data, index) => (
+          animeSectionData.map((data, index) => (
             <CatagorySwipper
               key={index}
               apiPath={`${BASE_API_PATH}${data.apiPath}`}
               sectionTitle={data.sectionTitle}
             />
           )),
-        ].map((compnent, index) => (
-          <div key={index}>{compnent}</div>
-        ))}
-      </section>
-      <section></section>
+        ].map((compnent, index) => <div key={index}>{compnent}</div>)
+      }
 
       <Footer />
     </div>

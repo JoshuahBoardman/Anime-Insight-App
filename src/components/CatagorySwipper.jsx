@@ -42,6 +42,7 @@ const CatagorySwipper = ({ apiPath, sectionTitle }) => {
         <img
           className="img-fluid rounded shadow-sm"
           src={anime.attributes.posterImage.small}
+          //TODO: Change alt text
           alt="yes"
         />
       </SwiperSlide>
@@ -51,7 +52,7 @@ const CatagorySwipper = ({ apiPath, sectionTitle }) => {
   // TODO: Add hover effects to the images
   // TODO: Chnage navigation color
   return (
-    <div className="container-lg mt-2 mt-sm-4">
+    <section className="container-lg mt-2 mt-sm-4">
       <div className="row justify-content-center align-items-center">
         <div className="col-lg-11">
           <h3 className="h2 text-align-start text-light mb-3">
@@ -73,7 +74,7 @@ const CatagorySwipper = ({ apiPath, sectionTitle }) => {
           </Swiper>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
