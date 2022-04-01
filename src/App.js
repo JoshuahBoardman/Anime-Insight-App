@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -48,25 +49,36 @@ function App() {
   ]);
 
   return (
-    <div className="bg-secondary">
-      <Header />
+    <BrowserRouter>
+      <div className="bg-secondary">
+        <Header />
 
-      {
-        [
-          /* TODO Make offset random 5350(for comedy)*/
-          <Hero apiPath={`${BASE_API_PATH}/trending/anime`} />,
-          animeSectionData.map((data, index) => (
-            <CatagorySwipper
-              key={index}
-              apiPath={`${BASE_API_PATH}${data.apiPath}`}
-              sectionTitle={data.sectionTitle}
-            />
-          )),
-        ].map((compnent, index) => <div key={index}>{compnent}</div>)
-      }
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {[
+                  /* TODO Make offset random 5350(for comedy)*/
+                  <Hero apiPath={`${BASE_API_PATH}/trending/anime`} />,
+                  animeSectionData.map((data, index) => (
+                    <CatagorySwipper
+                      key={index}
+                      apiPath={`${BASE_API_PATH}${data.apiPath}`}
+                      sectionTitle={data.sectionTitle}
+                    />
+                  )),
+                ].map((compnent, index) => (
+                  <div key={index}>{compnent}</div>
+                ))}
+              </>
+            }
+          />
+        </Routes>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -61,7 +61,7 @@ const Hero = ({ apiPath }) => {
               style={{ filter: "brightness(65%)" }}
             />
             <Carousel.Caption>
-              <h3 className="h2 mb-1">
+              <h3 className="mb-1 mt-5">
                 {trendingAnimeData[0].attributes.canonicalTitle}
               </h3>
             </Carousel.Caption>
