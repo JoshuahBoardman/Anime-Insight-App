@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import CatagorySwipper from "./components/CatagorySwipper";
+import AnimeProfileDisplay from "./components/AnimeProfileDisplay";
 
 function App() {
   const BASE_API_PATH = "https://kitsu.io/api/edge";
@@ -73,6 +75,10 @@ function App() {
                 ))}
               </>
             }
+          /> 
+          <Route path="anime/:animeId" element={
+            <AnimeProfileDisplay baseApiPath={BASE_API_PATH} />} 
+
           />
         </Routes>
 

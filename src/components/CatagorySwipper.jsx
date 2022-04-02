@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+
 import Loading from "./Loading";
+
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
 
 const CatagorySwipper = ({ apiPath, sectionTitle }) => {
   const [animeData, setAnimeData] = useState([]);
@@ -39,12 +42,14 @@ const CatagorySwipper = ({ apiPath, sectionTitle }) => {
   function displayAnimeData() {
     return animeData.map((anime, index) => (
       <SwiperSlide key={index}>
+        <Link to={`anime/${anime.id}`}>
         <img
           className="img-fluid rounded shadow-sm"
           src={anime.attributes.posterImage.small}
           //TODO: Change alt text
           alt="yes"
         />
+        </Link>  
       </SwiperSlide>
     ));
   }
