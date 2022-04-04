@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Loading from "./Loading";
+import { Link } from "react-router-dom";
+
 import Carousel from "react-bootstrap/Carousel";
+import Loading from "./Loading";
 
 const Hero = ({ apiPath }) => {
   const [index, setIndex] = useState(0);
@@ -41,8 +43,6 @@ const Hero = ({ apiPath }) => {
   // TODO: Ajust caption styling and size
   return (
     <section>
-      {/* TODO: Add a header that says something like "Trending above the carousel maybe?" */}
-      {/* TODO: Add some margin around the carousel to give the page some white or black maybe? */}
       {/* TODO: Make the carousel clickable. */}
 
       {isLoading ? (
@@ -54,43 +54,49 @@ const Hero = ({ apiPath }) => {
           className="shadow"
         >
           <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={trendingAnimeData[0].attributes.coverImage.large}
-              alt="First slide"
-              style={{ filter: "brightness(65%)" }}
-            />
-            <Carousel.Caption>
-              <h3 className="mb-1 mt-5">
-                {trendingAnimeData[0].attributes.canonicalTitle}
-              </h3>
-            </Carousel.Caption>
+            <Link to={`anime/${trendingAnimeData[0].id}`}>
+              <img
+                className="d-block w-100"
+                src={trendingAnimeData[0].attributes.coverImage.large}
+                alt="First slide"
+                style={{ filter: "brightness(65%)" }}
+              />
+              <Carousel.Caption>
+                <h3 className="mb-1 mt-5">
+                  {trendingAnimeData[0].attributes.canonicalTitle}
+                </h3>
+              </Carousel.Caption>
+            </Link>
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={trendingAnimeData[1].attributes.coverImage.large}
-              alt="First slide"
-              style={{ filter: "brightness(65%)" }}
-            />
-            <Carousel.Caption>
-              <h3 className="h2 mb-1">
-                {trendingAnimeData[1].attributes.canonicalTitle}
-              </h3>
-            </Carousel.Caption>
+            <Link to={`anime/${trendingAnimeData[1].id}`}>
+              <img
+                className="d-block w-100"
+                src={trendingAnimeData[1].attributes.coverImage.large}
+                alt="First slide"
+                style={{ filter: "brightness(65%)" }}
+              />
+              <Carousel.Caption>
+                <h3 className="h2 mb-1">
+                  {trendingAnimeData[1].attributes.canonicalTitle}
+                </h3>
+              </Carousel.Caption>
+            </Link>
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={trendingAnimeData[2].attributes.coverImage.large}
-              alt="First slide"
-              style={{ filter: "brightness(65%)" }}
-            />
-            <Carousel.Caption>
-              <h3 className="h2 mb-1">
-                {trendingAnimeData[2].attributes.canonicalTitle}
-              </h3>
-            </Carousel.Caption>
+            <Link to={`anime/${trendingAnimeData[2].id}`}>
+              <img
+                className="d-block w-100"
+                src={trendingAnimeData[2].attributes.coverImage.large}
+                alt="First slide"
+                style={{ filter: "brightness(65%)" }}
+              />
+              <Carousel.Caption>
+                <h3 className="h2 mb-1">
+                  {trendingAnimeData[2].attributes.canonicalTitle}
+                </h3>
+              </Carousel.Caption>
+            </Link>
           </Carousel.Item>
         </Carousel>
       )}
