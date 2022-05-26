@@ -35,7 +35,10 @@ const Header = () => {
               className="d-flex mt-3 mt-md-0"
               onSubmit={(e) => {
                 e.preventDefault();
-                const formatedInputValue = formatInputValue(inputValue);
+                let formatedInputValue = formatInputValue(inputValue);
+                console.log(formatedInputValue)
+
+                if (formatedInputValue === "") return
 
                 navigate(`/genre/${formatedInputValue}`);
               }}
