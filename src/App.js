@@ -60,7 +60,7 @@ function App() {
           <Route
             path="/"
             element={
-              <div className="pb-3">
+              <div className="pb-3" style={{minHeight: '100vh'}}>
                 {[
                   /* TODO Make offset random 5350(for comedy)*/
                   <Hero apiPath={`${BASE_API_PATH}/trending/anime`} />,

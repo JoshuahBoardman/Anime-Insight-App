@@ -41,7 +41,7 @@ const AnimeProfileDisplay = ({ baseApiPath }) => {
 
 
   return (
-    <section>
+    <section style={{minHeight: '100vh'}}>
       {isLoading ? (
         <Loading />
       ) : (
